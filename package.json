@@ -1,7 +1,7 @@
 {
   "name": "atom-search-everywhere",
   "main": "./lib/main",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Fuzzy grep project using ag, pt, ack, grep, ripgrep, or git-grep, Converted from atom-fuzzy-gerp.",
   "keywords": [
     "fuzzy",
