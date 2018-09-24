@@ -1,0 +1,90 @@
+{
+  "name": "atom-search-everywhere",
+  "main": "./lib/main",
+  "version": "0.0.1",
+  "description": "Fuzzy grep project using ag, pt, ack, grep, ripgrep, or git-grep, Converted from atom-fuzzy-gerp.",
+  "keywords": [
+    "fuzzy",
+    "grep",
+    "ag",
+    "pt",
+    "productivity",
+    "search",
+    "find"
+  ],
+  "configSchema": {
+    "minSymbolsToStartSearch": {
+      "type": "number",
+      "default": 3,
+      "order": 0
+    },
+    "maxCandidates": {
+      "type": "number",
+      "default": 100,
+      "order": 1
+    },
+    "grepCommandString": {
+      "type": "string",
+      "default": "ag -i --nocolor --nogroup --column",
+      "order": 2
+    },
+    "detectGitProjectAndUseGitGrep": {
+      "type": "boolean",
+      "default": true,
+      "order": 3
+    },
+    "gitGrepCommandString": {
+      "type": "string",
+      "default": "git grep -i --no-color -n -E",
+      "order": 4
+    },
+    "preserveLastSearch": {
+      "type": "boolean",
+      "default": false,
+      "order": 5
+    },
+    "escapeSelectedText": {
+      "type": "boolean",
+      "default": true,
+      "order": 6
+    },
+    "showFullPath": {
+      "type": "boolean",
+      "default": false,
+      "order": 7
+    },
+    "inputThrottle": {
+      "type": "integer",
+      "default": 50,
+      "order": 8
+    },
+    "escapeOnPaste": {
+      "type": "boolean",
+      "default": true,
+      "order": 9
+    },
+    "fixEnv": {
+      "type": "boolean",
+      "description": "Fix env on OS X when running not from terminal.",
+      "default": true,
+      "order": 10
+    }
+  },
+  "activationCommands": {
+    "atom-workspace": [
+      "search-everywhere:toggle",
+      "search-everywhere:toggleLastSearch",
+      "search-everywhere:toggleWordUnderCursor"
+    ]
+  },
+  "repository": "https://github.com/frapples/atom-search-everywhere",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "dependencies": {
+    "atom-select-list": "^0.7.2",
+    "escape-string-regexp": "^1.0.3",
+    "fuzzaldrin": "^2.1.0"
+  }
+}
