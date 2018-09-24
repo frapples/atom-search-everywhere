@@ -1,6 +1,13 @@
 # atom-search-everywhere package
 
-This project was converted from https://github.com/geksilla/atom-search-everywhere.
+This project was converted from https://github.com/geksilla/atom-fuzzy-grep.
+
+1. Written in ES6, easier to maintain.
+2. Fix the problem of searching for non-ASCII characters such as Chinese.
+3. Fix the problem of detecting git repository under Windows.
+
+Note: Due to porting from coffeescript, the feature has not been fully tested and there may be unknown bugs.
+
 
 ## Install
 
@@ -93,7 +100,6 @@ __atom-search-everywhere.escapeSelectedText__            | true                 
 __atom-search-everywhere.showFullPath__                  | false                                | _boolean_ | Show full file path instead of file name
 __atom-search-everywhere.inputThrottle__                 | 50                                   | _integer_ | Input throttle
 __atom-search-everywhere.escapeOnPaste__                 | true                                 | _boolean_ | Escape pasted text
-__atom-search-everywhere.fixEnv__                        | true                                 | boolean   | Will fix $PATH variable when running your favourite grep tool, environment package should be installed.
 
 
 ## Contributing
