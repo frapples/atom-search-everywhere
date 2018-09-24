@@ -62,12 +62,6 @@
       "type": "boolean",
       "default": true,
       "order": 9
-    },
-    "fixEnv": {
-      "type": "boolean",
-      "description": "Fix env on OS X when running not from terminal.",
-      "default": true,
-      "order": 10
     }
   },
   "activationCommands": {
