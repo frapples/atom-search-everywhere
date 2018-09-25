@@ -25,14 +25,14 @@
       "order": 1
     },
     "searcherPriority": {
-        "type": "array",
-        "default": [
-            "gitgrep",
-            "grep",
-            "builtin"
-        ],
-        "description": "The plugin will look up the first available searcher in order for the search.",
-        "order": 2
+      "type": "array",
+      "default": [
+        "gitgrep",
+        "grep",
+        "builtin"
+      ],
+      "description": "The plugin will look up the first available searcher in order for the search.",
+      "order": 2
     },
     "gitGrepCommandString": {
       "type": "string",
