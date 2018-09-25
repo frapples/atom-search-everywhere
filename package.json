@@ -40,7 +40,7 @@
     },
     "preserveLastSearch": {
       "type": "boolean",
-      "default": false,
+      "default": true,
       "order": 5
     },
     "escapeSelectedText": {
