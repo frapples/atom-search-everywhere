@@ -5,9 +5,23 @@ This project was converted from https://github.com/geksilla/atom-fuzzy-grep.
 1. Written in ES6, easier to maintain.
 2. Fix the problem of searching for non-ASCII characters such as Chinese.
 3. Fix the problem of detecting git repository under Windows.
+4. More new features.
 
 Note: Due to porting from coffeescript, the feature has not been fully tested and there may be unknown bugs.
 
+## Feature
+Atom-search-everywhere performs a full-text search of the project, similar to InfinJ IDEA's Find-in-Path.
+
+Enter a regular expression in the input, full-text search results for the project from active text editor will be displayed.
+
+Currently supports three searchers:
+1. `gitgrep`. Use the git grep command to search. Faster, can eliminate files that do not need to be searched (by identifying the .gitignore file).
+2. `grep`. Search using grep, ag, pt, etc. High performance, but may search for files that should not be searched.
+3. `builtin`. Use the built-in search API of atom. Slow speed and good compatibility. Suitable for use in unfamiliar system environments.
+
+
+When searching, it will intelligently detect the appropriate searcher.
+The default detection order is `gitgrep, grep, builtin`, and it can be modified by the custom `searcherPriority` option.
 
 ## Install
 
@@ -24,16 +38,6 @@ To open dialog with last searched string there is the command ```search-everywhe
 ```
 'atom-workspace':
   'ctrl-alt-shift-g': 'search-everywhere:toggleLastSearch'
-```
-
-To always open dialog with last search string check **Preserve Last Search** in package settings.
-
-You can filter files in opened dialog. Toggle between grep/file mode with ```ctrl-f```.
-To change this keybinding add following lines to your *keymaps.cson*:
-
-```
-'atom-workspace .atom-search-everywhere':
-  '<your_keys_here>': 'search-everywhere:toggleFileFilter'
 ```
 
 ## Configuration
@@ -81,7 +85,6 @@ Name                            | Selector         | Key Map               | Des
 __search-everywhere:toggle__                | `atom-workspace` | 'ctrl-alt-g' | Open search dialog start typing and select item
 __search-everywhere:toggleLastSearch__      | `atom-workspace` | none                  | Open dialog with last search string
 __search-everywhere:toggleWordUnderCursor__ | `atom-workspace` | 'cmd-*'               | Open dialog with word under cursor
-__search-everywhere:toggleFileFilter__      | `atom-workspace .atom-search-everywhere atom-text-editor` | 'ctrl-f'     | When search dialog opened toggle file name filtering on found results
 __search-everywhere:pasteEscaped__          | `body.platform-linux atom-workspace .atom-search-everywhere atom-text-editor, body.platform-win32 atom-workspace .atom-search-everywhere atom-text-editor` | 'ctrl-v'     | Paste text to dialog and escape it, you can disable this behavior with `atom-search-everywhere.escapeOnPaste` config
 __search-everywhere:pasteEscaped__          | `body.platform-darwin atom-workspace .atom-search-everywhere atom-text-editor` | 'cmd-v'     | Paste text to dialog and escape it, you can disable this behavior with `atom-search-everywhere.escapeOnPaste` config
 
@@ -93,9 +96,9 @@ Name                                              | Default                     
 __atom-search-everywhere.minSymbolsToStartSearch__       | 3                                    | _number_  | Start search after N symbol
 __atom-search-everywhere.maxCandidates__                 | 100                                  | _number_  | Maximum count of displayed items
 __atom-search-everywhere.grepCommandString__             | 'ag -i --nocolor --nogroup --column' | _string_  | Grep command
-__atom-search-everywhere.detectGitProjectAndUseGitGrep__ | false                                | _boolean_ | Always use `git grep` when opened project is a git repository
+__atom-search-everywhere.searcherPriority__ |"gitgrep", "grep", "builtin" | _array_ | The plugin will look up the first available searcher in order for the search.
 __atom-search-everywhere.gitGrepCommandString__          | 'git grep -i --no-color -n -E'       | _string_  | `git grep` command used when `detectGitProjectAndUseGitGrep` is true
-__atom-search-everywhere.preserveLastSearch__            | false                                | _boolean_ | Use last search string as input for search dialog
+__atom-search-everywhere.preserveLastSearch__            | true                                | _boolean_ | Use last search string as input for search dialog
 __atom-search-everywhere.escapeSelectedText__            | true                                 | _boolean_ | Escape special characters when dialog opened with selected text
 __atom-search-everywhere.showFullPath__                  | false                                | _boolean_ | Show full file path instead of file name
 __atom-search-everywhere.inputThrottle__                 | 50                                   | _integer_ | Input throttle

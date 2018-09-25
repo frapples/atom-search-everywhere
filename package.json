@@ -21,21 +21,27 @@
     "maxCandidates": {
       "type": "number",
       "default": 100,
+      "description": "If there are too many searches, truncate the search results according to this option.",
       "order": 1
     },
-    "grepCommandString": {
-      "type": "string",
-      "default": "ag -i --nocolor --nogroup --column",
-      "order": 2
-    },
-    "detectGitProjectAndUseGitGrep": {
-      "type": "boolean",
-      "default": true,
-      "order": 3
+    "searcherPriority": {
+        "type": "array",
+        "default": [
+            "gitgrep",
+            "grep",
+            "builtin"
+        ],
+        "description": "The plugin will look up the first available searcher in order for the search.",
+        "order": 2
     },
     "gitGrepCommandString": {
       "type": "string",
       "default": "git grep -i --no-color -n -E",
+      "order": 3
+    },
+    "grepCommandString": {
+      "type": "string",
+      "default": "ag -i --nocolor --nogroup --column",
       "order": 4
     },
     "preserveLastSearch": {
