@@ -79,6 +79,7 @@
   "dependencies": {
     "atom-select-list": "^0.7.2",
     "escape-string-regexp": "^1.0.3",
-    "fuzzaldrin": "^2.1.0"
+    "fuzzaldrin": "^2.1.0",
+    "hasbin": "^1.2.3"
   }
 }
