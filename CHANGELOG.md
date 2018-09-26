@@ -1,4 +1,4 @@
-## 1.0.1
+## 1.1.0
 * Optimize the input when the input interval is too short.
 * Fix bug of cancelled searcher will affect the view.
 * Fix bug that the callback was not executed when the grep process was killed
